@@ -2,10 +2,14 @@ package cat.urv.deim.asm.patinfly
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+class LoginActivity: AppCompatActivity(){
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        this.findViewById<EditText>(R.id.textEmail)
     }
 }
