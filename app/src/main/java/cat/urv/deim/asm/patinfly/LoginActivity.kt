@@ -1,8 +1,7 @@
 package cat.urv.deim.asm.patinfly
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 
 
 class LoginActivity: AppCompatActivity(){
@@ -10,6 +9,8 @@ class LoginActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.findViewById<EditText>(R.id.textEmail)
+        //this.findViewById<EditText>(R.id.textEmail)
+            
+
     }
 }
