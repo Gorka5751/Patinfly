@@ -13,7 +13,6 @@ class LoginActivity: AppCompatActivity(){
         val loginEmailEditTest = this.findViewById<EditText>(R.id.loginEmailEditText)
 
         this.findViewById<EditText>(R.id.textEmail)
-        print("Hello WORLD")
     }
 
     override fun onStart() {
