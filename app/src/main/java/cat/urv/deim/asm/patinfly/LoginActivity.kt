@@ -10,12 +10,13 @@ class LoginActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val loginEmailEditTest = this.findViewById<EditText>(R.id.loginEmailEditText)
+        val loginEmailEditTest = this.findViewById<EditText>(R.id.textEmail)
 
         this.findViewById<EditText>(R.id.textEmail)
+        print("El Toni Lazaro es sensual")
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
+
+
+
 }
