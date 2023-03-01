@@ -9,8 +9,8 @@ class LoginActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //this.findViewById<EditText>(R.id.textEmail)
-            
+        this.findViewById<EditText>(R.id.textEmail)
+        print("Hello WORLD")
 
     }
 }
