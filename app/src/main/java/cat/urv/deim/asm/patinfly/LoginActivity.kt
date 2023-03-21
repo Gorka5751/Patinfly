@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
             Log.d("LoginActivity-Debug", String.format("user: %s password: %s", email, password))
         }
 
-    }
+    } //HOLA CALVO
 
     private fun validateCredentials() {
         val loginEmailEditText = this.findViewById<EditText>(R.id.textEmail)
