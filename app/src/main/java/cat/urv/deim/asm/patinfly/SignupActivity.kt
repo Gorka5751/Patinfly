@@ -19,6 +19,7 @@ class SignupActivity: AppCompatActivity() {
 
 
 
+
         val Nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
         val lista = arrayOf("España", "Francia", "Alemania", "Wakanda")
         val nacionalitats = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lista);
@@ -49,10 +50,10 @@ class SignupActivity: AppCompatActivity() {
 
 
 
-            val intento1 = Intent(this, LoginActivity::class.java)
+            val intento1 = Intent(this, ProfileInfoActivity::class.java)
             startActivity(intento1)
             val newUser = userInfo(Nombre,Apellido,Correo,Telefono,DNI,Nacionalidad.selectedItem.toString(),Kilometros);
-            UserRepository().addUser(newUser);
+            UserRepository.userGlobal = newUser;
 
 
 
@@ -64,4 +65,6 @@ class SignupActivity: AppCompatActivity() {
 
 
 }
+
+
 

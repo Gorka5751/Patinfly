@@ -4,12 +4,19 @@ data class userInfo(val nom: String = "", val cognom: String = "", val correu: S
 }
 
 class UserRepository {
-   private val userList = mutableListOf<userInfo>()
 
 
-    fun addUser(user: userInfo) {
-        userList.add(user)
+companion object{
+    var userGlobal: userInfo = userInfo("","","","","","","")
+}
+
+
+
+
+    fun getUser(user: userInfo):userInfo {
+      return user
     }
+
 
 
 }

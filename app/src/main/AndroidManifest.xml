@@ -33,6 +33,8 @@
             android:exported="false" />
         <activity android:name=".SignupActivity"
             android:exported="false"/>
+        <activity android:name=".ProfileInfoActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
