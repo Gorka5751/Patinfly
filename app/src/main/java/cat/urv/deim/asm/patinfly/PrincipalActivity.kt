@@ -16,5 +16,10 @@ class PrincipalActivity : AppCompatActivity() {
             val intento1 = Intent(this, LoginActivity::class.java)
             startActivity(intento1)
         }
+        val botoDatosUsuario = this.findViewById<Button>(R.id.datosusuario)
+        botoDatosUsuario.setOnClickListener {
+            val intento2 = Intent(this,ProfileInfoActivity::class.java)
+            startActivity(intento2)
+        }
     }
 }

@@ -4,15 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
+
 import android.view.View
-import android.widget.AdapterView
+
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.time.Duration
+
 
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
 
 
-
+        //Mostrem la splashscreen durant 3 segons i despres passa a la login view on podrem iniciar sessio o registrar
         setContentView(R.layout.splashscreen)
         postDelayed(3000){
             setContentView(R.layout.activity_main)
@@ -35,23 +35,29 @@ class LoginActivity : AppCompatActivity(), LoginView {
             val loginPasswordEditText = this.findViewById<EditText>(R.id.textPassword)
             val loginSignInButton = this.findViewById<Button>(R.id.LogIn)
             loginSignInButton.setOnClickListener {
+                this.showProgress()
                 val email: String = loginEmailEditText.text.toString()
                 val password: String = loginPasswordEditText.text.toString()
-                //validateCredentials()
-                if(email.equals(UserRepository.userGlobal.correu) && email!="" && password.equals(UserRepository.userGlobal.contraseña)){
-                    println("ENTRO")
-                    showToast(applicationContext,"Has iniciado sesion correctamente",10)
-
-                    val intento3 = Intent(this, PrincipalActivity::class.java)
-                    startActivity(intento3)
+                //Comprovem que el email i la contrasenya que posa lusuari es la mateixa que s'ha guardat a la varibale global durant el signup
+                if(email.equals(UserRepository.userGlobal.correu) && email!="" && password!=""){
+                    if(password.equals(UserRepository.userGlobal.contraseña)){
+                        this.hideProgress()
+                        showToast(applicationContext,"Has iniciado sesion correctamente",10)
+                        navigateToProfile()
+                    }else{
+                        setPasswordError()
+                    }
+                }else{
+                    setUsernameError()
                 }
             }
+            //Quan es pulsa el boto aquest, ens porta cap al tutorial
             val botoTutorial=this.findViewById<Button>(R.id.Tutorial1)
             botoTutorial.setOnClickListener {
                 val intento1 = Intent(this, TutorialActivity::class.java)
                 startActivity(intento1)
             }
-
+            //Quan es pulsa aquest boto, ens porta a la pagina de signup per crear usuari
             val botoSignIn=this.findViewById<Button>(R.id.SignIn)
             botoSignIn.setOnClickListener {
                 val intento2 = Intent(this, SignupActivity::class.java)
@@ -61,7 +67,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         }
 
-        //Añadir delay de 2 segundos...
 
 
 
@@ -73,13 +78,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     }
 
-    private fun validateCredentials() {
-        val loginEmailEditText = this.findViewById<EditText>(R.id.textEmail)
-        val loginPasswordEditText = this.findViewById<EditText>(R.id.textPassword)
-        presenter.validateCredentials(  loginEmailEditText.text.toString(),
-            loginPasswordEditText.text.toString())
 
-    }
     override fun onStart() {
         super.onStart()
     }
@@ -94,19 +93,18 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     @SuppressLint("SetTextI18n")
     override fun setUsernameError() {
-        this.findViewById<EditText>(R.id.textEmail).setText("Usuari/email erroni")
+        showToast(applicationContext,"Error al introducir usuario",10)
     }
 
     @SuppressLint("SetTextI18n")
     override fun setPasswordError() {
-        this.findViewById<EditText>(R.id.textPassword).setText("Login error on Password")
+        showToast(applicationContext,"Error al introducir contraseña",10)
     }
 
     override fun navigateToProfile() {
-       // val intent = Intent()
-       // intent.setClass(this, PrincipalActivity::class.java)
-       // intent.putExtra("key","value")
-       // this.startActivity(intent)
+       val intent = Intent()
+       intent.setClass(this, PrincipalActivity::class.java)
+       this.startActivity(intent)
     }
     private fun showToast(context: Context = applicationContext, message: String, duration: Int){
         Toast.makeText(context,message,duration).show()

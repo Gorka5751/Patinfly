@@ -1,9 +1,11 @@
 package cat.urv.deim.asm.patinfly
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class ProfileInfoActivity: AppCompatActivity() {
@@ -42,6 +44,7 @@ class ProfileInfoActivity: AppCompatActivity() {
         botoCerrarSesion.setOnClickListener{
             val intento2 = Intent(this, PrincipalActivity::class.java)
             startActivity(intento2)
+            showToast(applicationContext,"Has creado una cuenta correctamente",10)
         }
         botoCanviarDatos.setOnClickListener {
             val intento3 = Intent(this, SignupActivity::class.java)
@@ -53,5 +56,8 @@ class ProfileInfoActivity: AppCompatActivity() {
 
         println(UserRepository.userGlobal.cognom)
 
+    }
+    private fun showToast(context: Context = applicationContext, message: String, duration: Int){
+        Toast.makeText(context,message,duration).show()
     }
 }
