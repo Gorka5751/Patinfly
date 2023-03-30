@@ -21,7 +21,7 @@ class SignupActivity: AppCompatActivity() {
 
 
         val Nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
-        val lista = arrayOf("España", "Francia", "Alemania", "Wakanda")
+        val lista = arrayOf("España", "Francia", "Alemania", "Wakanda","Suïssa")
         val nacionalitats = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lista);
         Nacionalidad.adapter = nacionalitats
 
