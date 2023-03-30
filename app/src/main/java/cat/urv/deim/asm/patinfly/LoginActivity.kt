@@ -39,11 +39,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 val password: String = loginPasswordEditText.text.toString()
                 //validateCredentials()
                 if(email.equals(UserRepository.userGlobal.correu) && email!="" && password.equals(UserRepository.userGlobal.contraseña)){
-                    println("ENTRO")
+
                     showToast(applicationContext,"Has iniciado sesion correctamente",10)
 
                     val intento3 = Intent(this, PrincipalActivity::class.java)
                     startActivity(intento3)
+                }else{
+                    showToast(applicationContext,"Datos introducidos incorrectamente",10)
                 }
             }
             val botoTutorial=this.findViewById<Button>(R.id.Tutorial1)
