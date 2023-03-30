@@ -1,14 +1,18 @@
 package cat.urv.deim.asm.patinfly
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Message
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.time.Duration
 
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -22,18 +26,25 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
 
 
+
         setContentView(R.layout.splashscreen)
-        postDelayed(4000){
+        postDelayed(3000){
             setContentView(R.layout.activity_main)
             this.hideProgress()
             val loginEmailEditText = this.findViewById<EditText>(R.id.textEmail)
             val loginPasswordEditText = this.findViewById<EditText>(R.id.textPassword)
-            val loginSignInButton = this.findViewById<Button>(R.id.SignIn)
+            val loginSignInButton = this.findViewById<Button>(R.id.LogIn)
             loginSignInButton.setOnClickListener {
                 val email: String = loginEmailEditText.text.toString()
                 val password: String = loginPasswordEditText.text.toString()
-                validateCredentials()
-                Log.d("LoginActivity-Debug", String.format("user: %s password: %s", email, password))
+                //validateCredentials()
+                if(email.equals(UserRepository.userGlobal.correu) && email!="" && password.equals(UserRepository.userGlobal.contraseña)){
+                    println("ENTRO")
+                    showToast(applicationContext,"Has iniciado sesion correctamente",10)
+
+                    val intento3 = Intent(this, PrincipalActivity::class.java)
+                    startActivity(intento3)
+                }
             }
             val botoTutorial=this.findViewById<Button>(R.id.Tutorial1)
             botoTutorial.setOnClickListener {
@@ -46,6 +57,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 val intento2 = Intent(this, SignupActivity::class.java)
                 startActivity(intento2)
             }
+
+
         }
 
         //Añadir delay de 2 segundos...
@@ -65,6 +78,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         val loginPasswordEditText = this.findViewById<EditText>(R.id.textPassword)
         presenter.validateCredentials(  loginEmailEditText.text.toString(),
             loginPasswordEditText.text.toString())
+
     }
     override fun onStart() {
         super.onStart()
@@ -89,11 +103,15 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun navigateToProfile() {
-        val intent = Intent()
-        intent.setClass(this, ProfileActivity::class.java)
-        intent.putExtra("key","value")
-        this.startActivity(intent)
+       // val intent = Intent()
+       // intent.setClass(this, PrincipalActivity::class.java)
+       // intent.putExtra("key","value")
+       // this.startActivity(intent)
     }
+    private fun showToast(context: Context = applicationContext, message: String, duration: Int){
+        Toast.makeText(context,message,duration).show()
+    }
+
 
 
 }

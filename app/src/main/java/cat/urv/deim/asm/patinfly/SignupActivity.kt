@@ -42,6 +42,7 @@ class SignupActivity: AppCompatActivity() {
             val DNI = this.findViewById<EditText>(R.id.dni).text.toString()
             val Telefono = this.findViewById<EditText>(R.id.telefono).text.toString()
             val Kilometros = this.findViewById<EditText>(R.id.kilometros).text.toString()
+            val Contraseña = this.findViewById<EditText>(R.id.passwordSignup).text.toString()
 
 
 
@@ -50,10 +51,16 @@ class SignupActivity: AppCompatActivity() {
 
 
 
-            val intento1 = Intent(this, ProfileInfoActivity::class.java)
-            startActivity(intento1)
-            val newUser = userInfo(Nombre,Apellido,Correo,Telefono,DNI,Nacionalidad.selectedItem.toString(),Kilometros);
+            val newUser = userInfo(Nombre,Apellido,Correo,Telefono,DNI,Nacionalidad.selectedItem.toString(),Kilometros,Contraseña);
             UserRepository.userGlobal = newUser;
+
+
+            if(UserRepository.userGlobal.nom!="" && UserRepository.userGlobal.cognom!="" && UserRepository.userGlobal.correu!="" && UserRepository.userGlobal.dni!=""&& UserRepository.userGlobal.telefon!="" && UserRepository.userGlobal.Km!="" && UserRepository.userGlobal.nacionalitat!="" && UserRepository.userGlobal.contraseña!="" ){
+                val intento1 = Intent(this, ProfileInfoActivity::class.java)
+                startActivity(intento1)
+            }else{
+
+            }
 
 
 

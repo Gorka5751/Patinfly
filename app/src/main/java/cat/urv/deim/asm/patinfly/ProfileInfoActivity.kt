@@ -13,24 +13,34 @@ class ProfileInfoActivity: AppCompatActivity() {
         setContentView(R.layout.profile_info);
         val userRepository = UserRepository();
 
-        if(UserRepository.userGlobal.nom!="" && UserRepository.userGlobal.cognom!="" && UserRepository.userGlobal.correu!="" && UserRepository.userGlobal.dni!=""&& UserRepository.userGlobal.telefon!="" && UserRepository.userGlobal.Km!="" && UserRepository.userGlobal.nacionalitat!=""){
-            findViewById<TextView>(R.id.nomProfile).text = UserRepository.userGlobal.nom;
-            findViewById<TextView>(R.id.Cognom).text = UserRepository.userGlobal.cognom;
-            findViewById<TextView>(R.id.correu).text = UserRepository.userGlobal.correu;
-            findViewById<TextView>(R.id.dniText).text = UserRepository.userGlobal.dni;
-            findViewById<TextView>(R.id.telefon).text = UserRepository.userGlobal.telefon;
-            findViewById<TextView>(R.id.nacio).text = UserRepository.userGlobal.nacionalitat;
-            findViewById<TextView>(R.id.kilometres).text = UserRepository.userGlobal.Km;
-        }else{
-            val intento1 = Intent(this, SignupActivity::class.java)
-            startActivity(intento1)
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        findViewById<TextView>(R.id.nomProfile).text = UserRepository.userGlobal.nom;
+        findViewById<TextView>(R.id.Cognom).text = UserRepository.userGlobal.cognom;
+        findViewById<TextView>(R.id.correu).text = UserRepository.userGlobal.correu;
+        findViewById<TextView>(R.id.dniText).text = UserRepository.userGlobal.dni;
+        findViewById<TextView>(R.id.telefon).text = UserRepository.userGlobal.telefon;
+        findViewById<TextView>(R.id.nacio).text = UserRepository.userGlobal.nacionalitat;
+        findViewById<TextView>(R.id.kilometres).text = UserRepository.userGlobal.Km;
 
         val botoCerrarSesion=this.findViewById<Button>(R.id.sesion)
         val botoCanviarDatos=this.findViewById<Button>(R.id.Datos)
 
+        //Si el usuario se registra correctamente, se le llevara a la actividad principal, que es la
+        //misma activity que entraria desde el login.
         botoCerrarSesion.setOnClickListener{
-            val intento2 = Intent(this, LoginActivity::class.java)
+            val intento2 = Intent(this, PrincipalActivity::class.java)
             startActivity(intento2)
         }
         botoCanviarDatos.setOnClickListener {
