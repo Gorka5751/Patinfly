@@ -14,16 +14,16 @@ class SignupActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.signup);
+        setContentView(R.layout.signup)
 
 
 
 
 
-        val Nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
+        val nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
         val lista = arrayOf("España", "Francia", "Alemania", "Wakanda","Suïssa")
-        val nacionalitats = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lista);
-        Nacionalidad.adapter = nacionalitats
+        val nacionalitats = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lista)
+        nacionalidad.adapter = nacionalitats
 
 
 
@@ -36,13 +36,13 @@ class SignupActivity: AppCompatActivity() {
         botoCrear.setOnClickListener {
 
 
-            val Nombre = this.findViewById<EditText>(R.id.nombre).text.toString()
-            val Apellido = this.findViewById<EditText>(R.id.apellido).text.toString()
-            val Correo = this.findViewById<EditText>(R.id.correo).text.toString()
-            val DNI = this.findViewById<EditText>(R.id.dni).text.toString()
-            val Telefono = this.findViewById<EditText>(R.id.telefono).text.toString()
-            val Kilometros = this.findViewById<EditText>(R.id.kilometros).text.toString()
-            val Contraseña = this.findViewById<EditText>(R.id.passwordSignup).text.toString()
+            val nombre = this.findViewById<EditText>(R.id.nombre).text.toString()
+            val apellido = this.findViewById<EditText>(R.id.apellido).text.toString()
+            val correo = this.findViewById<EditText>(R.id.correo).text.toString()
+            val dNI = this.findViewById<EditText>(R.id.dni).text.toString()
+            val telefono = this.findViewById<EditText>(R.id.telefono).text.toString()
+            val kilometros = this.findViewById<EditText>(R.id.kilometros).text.toString()
+            val contrasena = this.findViewById<EditText>(R.id.passwordSignup).text.toString()
 
 
 
@@ -51,15 +51,13 @@ class SignupActivity: AppCompatActivity() {
 
 
 
-            val newUser = userInfo(Nombre,Apellido,Correo,Telefono,DNI,Nacionalidad.selectedItem.toString(),Kilometros,Contraseña);
-            UserRepository.userGlobal = newUser;
+            val newUser = userInfo(nombre,apellido,correo,telefono,dNI,nacionalidad.selectedItem.toString(),kilometros,contrasena)
+            UserRepository.userGlobal = newUser
 
 
             if(UserRepository.userGlobal.nom!="" && UserRepository.userGlobal.cognom!="" && UserRepository.userGlobal.correu!="" && UserRepository.userGlobal.dni!=""&& UserRepository.userGlobal.telefon!="" && UserRepository.userGlobal.Km!="" && UserRepository.userGlobal.nacionalitat!="" && UserRepository.userGlobal.contraseña!="" ){
                 val intento1 = Intent(this, ProfileInfoActivity::class.java)
                 startActivity(intento1)
-            }else{
-
             }
 
 
