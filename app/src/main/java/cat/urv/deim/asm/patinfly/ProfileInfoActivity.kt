@@ -18,16 +18,6 @@ class ProfileInfoActivity: AppCompatActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
         findViewById<TextView>(R.id.nomProfile).text = UserRepository.userGlobal.nom;
         findViewById<TextView>(R.id.Cognom).text = UserRepository.userGlobal.cognom;
         findViewById<TextView>(R.id.correu).text = UserRepository.userGlobal.correu;
