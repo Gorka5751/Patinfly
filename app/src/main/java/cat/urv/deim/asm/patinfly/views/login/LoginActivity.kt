@@ -1,4 +1,4 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.login
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,7 +12,12 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import cat.urv.deim.asm.patinfly.R
+import cat.urv.deim.asm.patinfly.models.UserRepository
+import cat.urv.deim.asm.patinfly.utils.postDelayed
+import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
+import cat.urv.deim.asm.patinfly.views.signup.SignupActivity
+import cat.urv.deim.asm.patinfly.views.tutorial.TutorialActivity
 
 
 class LoginActivity : AppCompatActivity(), LoginView {

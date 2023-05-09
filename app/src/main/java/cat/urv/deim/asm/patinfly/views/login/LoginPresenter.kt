@@ -1,4 +1,4 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.login
 
 class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginInteractor) :
     LoginInteractor.OnLoginFinishedListener {

@@ -1,8 +1,11 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import cat.urv.deim.asm.patinfly.R
+import cat.urv.deim.asm.patinfly.utils.postDelayed
+import cat.urv.deim.asm.patinfly.views.login.LoginActivity
 
 
 //NOM DELS INTEGRANTS DEL GRUP: GORKA ZAMORANO ORÓ I POL CULLERÉ FARRÉ

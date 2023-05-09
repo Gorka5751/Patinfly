@@ -1,4 +1,4 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.databinding.FragmentFirstBinding
 
 /**

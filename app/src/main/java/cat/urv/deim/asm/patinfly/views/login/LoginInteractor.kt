@@ -1,4 +1,6 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.login
+
+import cat.urv.deim.asm.patinfly.utils.postDelayed
 
 class LoginInteractor {
 

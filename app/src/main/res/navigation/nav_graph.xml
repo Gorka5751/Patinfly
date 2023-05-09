@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="cat.urv.deim.asm.patinfly.FirstFragment"
+        android:name="cat.urv.deim.asm.patinfly.views.fragments.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="cat.urv.deim.asm.patinfly.SecondFragment"
+        android:name="cat.urv.deim.asm.patinfly.views.fragments.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

@@ -1,10 +1,12 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.principal
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import cat.urv.deim.asm.patinfly.R
+import cat.urv.deim.asm.patinfly.views.profile.ProfileInfoActivity
+import cat.urv.deim.asm.patinfly.views.login.LoginActivity
 
 class PrincipalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +20,7 @@ class PrincipalActivity : AppCompatActivity() {
         }
         val botoDatosUsuario = this.findViewById<Button>(R.id.datosusuario)
         botoDatosUsuario.setOnClickListener {
-            val intento2 = Intent(this,ProfileInfoActivity::class.java)
+            val intento2 = Intent(this, ProfileInfoActivity::class.java)
             startActivity(intento2)
         }
     }

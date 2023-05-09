@@ -1,16 +1,27 @@
-package cat.urv.deim.asm.patinfly
+package cat.urv.deim.asm.patinfly.views.signup
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import cat.urv.deim.asm.patinfly.R
+import cat.urv.deim.asm.patinfly.models.UserRepository
+import cat.urv.deim.asm.patinfly.views.login.LoginInteractor
+import cat.urv.deim.asm.patinfly.views.login.LoginPresenter
+import cat.urv.deim.asm.patinfly.views.login.LoginView
+import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
 
 
-class SignupActivity: AppCompatActivity() {
+class SignupActivity: AppCompatActivity(), LoginView {
+
+    private val presenter = LoginPresenter(this, LoginInteractor())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         setContentView(R.layout.signup)
 
@@ -30,7 +41,7 @@ class SignupActivity: AppCompatActivity() {
 
 
 
-            val nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
+        val nacionalidad = this.findViewById<Spinner>(R.id.spinnerNaciones)
         val lista = arrayOf("España", "Francia", "Alemania", "Wakanda","Suïssa")
         val nacionalitats = ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lista)
         nacionalidad.adapter = nacionalitats
@@ -43,7 +54,9 @@ class SignupActivity: AppCompatActivity() {
 
         //AL CREAR UN NOU USUARI, GUARDAREM LA SEVA INFORMACIÓ DINS DE L'OBJECTE USERINFO.
         val botoCrear=this.findViewById<Button>(R.id.gorka)
+        this.hideProgress()
         botoCrear.setOnClickListener {
+            this.showProgress()
 
 
             val nombre = this.findViewById<EditText>(R.id.nombre).text.toString()
@@ -61,13 +74,12 @@ class SignupActivity: AppCompatActivity() {
 
 
 
-            val newUser = userInfo(nombre,apellido,correo,telefono,dNI,nacionalidad.selectedItem.toString(),kilometros,contrasena)
-            UserRepository.userGlobal = newUser
+            UserRepository.createUser(nombre,apellido,correo,telefono,dNI,nacionalidad.selectedItem.toString(),kilometros,contrasena)
+
 
 
             if(UserRepository.userGlobal.nom!="" && UserRepository.userGlobal.cognom!="" && UserRepository.userGlobal.correu!="" && UserRepository.userGlobal.dni!=""&& UserRepository.userGlobal.telefon!="" && UserRepository.userGlobal.Km!="" && UserRepository.userGlobal.nacionalitat!="" && UserRepository.userGlobal.contraseña!="" ){
-                val intento1 = Intent(this, PrincipalActivity::class.java)
-                startActivity(intento1)
+                navigateToProfile()
             }else{
                 showToast(applicationContext,"Todos los campos son necessarios",10)
             }
@@ -78,6 +90,34 @@ class SignupActivity: AppCompatActivity() {
 
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun showProgress() {
+        this.findViewById<ProgressBar>(R.id.progressSignup).visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        this.findViewById<ProgressBar>(R.id.progressSignup).visibility = View.INVISIBLE
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun setUsernameError() {
+        showToast(applicationContext,"Error al introducir usuario",10)
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun setPasswordError() {
+        showToast(applicationContext,"Error al introducir contraseña",10)
+    }
+
+    override fun navigateToProfile() {
+        val intent = Intent()
+        intent.setClass(this, PrincipalActivity::class.java)
+        this.startActivity(intent)
     }
     private fun showToast(context: Context = applicationContext, message: String, duration: Int){
         Toast.makeText(context,message,duration).show()
