@@ -16,6 +16,7 @@ import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.models.UserRepository
 import cat.urv.deim.asm.patinfly.utils.postDelayed
 import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
+import cat.urv.deim.asm.patinfly.views.scooter.ScootersListActivity
 import cat.urv.deim.asm.patinfly.views.signup.SignupActivity
 import cat.urv.deim.asm.patinfly.views.tutorial.TutorialActivity
 

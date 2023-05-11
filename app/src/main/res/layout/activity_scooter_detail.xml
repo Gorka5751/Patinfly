@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_margin="16dp"
+
+    android:background="@drawable/rounded_shape"
+    android:gravity="center_vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#22C2D6"
+        android:backgroundTint="#41DFD0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="342dp"
+            android:layout_height="33dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/LatitudView"
+            android:layout_width="157dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:text="Latitud:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.248"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/LongitudView"
+            android:layout_width="174dp"
+            android:layout_height="27dp"
+            android:text="Longitud"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.245" />
+
+        <TextView
+            android:id="@+id/BatteryView"
+            android:layout_width="159dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="16dp"
+            android:text="Battery:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.498"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/KilometersView"
+            android:layout_width="178dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="12dp"
+            android:text="Kilometers:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/RentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.936" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
