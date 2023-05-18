@@ -5,8 +5,10 @@ import android.os.Bundle
 import cat.urv.deim.asm.patinfly.R
 
 class ScooterDetailActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scooter_detail)
+        setContentView(R.layout.activity_scooter_detail_inside)
     }
 }

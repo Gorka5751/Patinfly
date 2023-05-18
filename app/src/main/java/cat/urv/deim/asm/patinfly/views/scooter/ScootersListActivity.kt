@@ -1,15 +1,17 @@
 package cat.urv.deim.asm.patinfly.views.scooter
 
+
 import android.os.Bundle
-import android.util.Log
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import cat.urv.deim.asm.patinfly.adapters.ScooterRecyclerViewAdapter
 import cat.urv.deim.asm.patinfly.base.AppConfig
 import cat.urv.deim.asm.patinfly.databinding.ActivityScooterListBinding
-import cat.urv.deim.asm.patinfly.models.Scooters
-import cat.urv.deim.asm.patinfly.models.ScooterRepository
 
+import cat.urv.deim.asm.patinfly.models.ScooterRepository
+import cat.urv.deim.asm.patinfly.models.Scooters
 
 
 class ScootersListActivity : AppCompatActivity() {
@@ -35,7 +37,7 @@ class ScootersListActivity : AppCompatActivity() {
         //val scooters:Scooters  = ScooterRepository.activeScooters()
 
         //Scooters from json file. To access to the file raw/scooters.json:
-        val scooters:Scooters  = ScooterRepository.activeScooters(this,
+        val scooters: Scooters = ScooterRepository.activeScooters(this,
             AppConfig.DEFAULT_SCOOTER_RAW_JSON_FILE)
 
         // Increase performance when the size is static
@@ -48,5 +50,8 @@ class ScootersListActivity : AppCompatActivity() {
 
         val adapter:ScooterRecyclerViewAdapter = ScooterRecyclerViewAdapter(scooters)
         binding.scooterRecyclerView.adapter = adapter
+
     }
 }
+
+

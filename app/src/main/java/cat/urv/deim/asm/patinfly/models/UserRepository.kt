@@ -1,4 +1,8 @@
 package cat.urv.deim.asm.patinfly.models
+
+
+
+
 data class User(val nom: String = "", val cognom: String = "", val correu: String = "", val telefon: String="", val dni: String = "", val nacionalitat: String ="", val Km: String="",val contraseña: String=""){
 
 }

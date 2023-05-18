@@ -1,25 +1,44 @@
 package cat.urv.deim.asm.patinfly.models
 
 import android.content.Context
-import cat.urv.deim.asm.patinfly.base.AppConfig
+import android.database.sqlite.SQLiteConstraintException
+import android.util.Log
+import android.widget.Toast
 import cat.urv.deim.asm.patinfly.repositories.AssetsProvider
+import cat.urv.deim.asm.patinfly.adapters.ScooterRecyclerViewAdapter
+import cat.urv.deim.asm.patinfly.persistence.ScooterDao
+import cat.urv.deim.asm.patinfly.persistence.Scooter
+import kotlinx.coroutines.*
+import java.lang.Runnable
+import java.util.concurrent.Executors
 
-data class Scooter(val uuid: String = "", val longitude: Double = 0.0, val latitude : Double = 0.0,
-                   val battery_level: Int=0, val km_use: Int = 0, val date_last_maintenance: String ="", val manteniment: String=""
-                   ,val state: String="", val on_rent:Boolean=false) {
-}
+
+
 
 class ScooterRepository {
 
 
     companion object{
-        var ScooterGlobal: Scooter = Scooter("",0.0,0.0, 0,
-            0,  "", "","",false)
+
 
 
         fun activeScooterList(context: Context, resource: String): List<Scooter> {
             val scooters: Scooters = ScooterRepository.activeScooters(context, resource)
             return scooters.scooters
+        }
+
+
+
+
+        fun insertArrayScooters(scooterDao: ScooterDao,scooter: Scooter){
+            Executors.newSingleThreadExecutor().execute(Runnable{
+                try{
+                    scooterDao.insertScooters(scooter)
+                } catch (e: SQLiteConstraintException){
+                    Log.d(ScooterRepository::class.simpleName,"Unique Valor Error")
+                }
+
+            })
         }
 
         fun activeScooters(context: Context, resource: String): Scooters {
@@ -31,21 +50,26 @@ class ScooterRepository {
             return scooters
         }
 
-        fun activeScooters(context: Context): Scooters {
-            val resource: String = AppConfig.DEFAULT_SCOOTER_RAW_JSON_FILE
-            return ScooterRepository.activeScooters(context, resource)
-        }
 
-        fun activeScooters(): Scooters {
-            val scooters: Scooters = Scooters()
-            val uuidList: Array<String> = AppConfig.DEFAULT_SCOOTERS_ID_ARRAY
-            var scooter: Scooter
-            uuidList.forEach {
-                scooter = Scooter(uuid = it)
-                scooters.scooters.add(scooter)
+       /* fun CorutineUpdateScooters(context: Context, scooterDao: ScooterDao, adapter: ScooterRecyclerViewAdapter){
+            CoroutineScope(Dispatchers.Main).launch {
+                val scootersDeferred: Deferred<List<Scooter>> = getAllScooters(context, scooterDao)
+                val scooters: List<Scooter> = scootersDeferred.await()
+                if (scooters.isEmpty()){
+                    Log.d(
+                        "CoroutineScope",
+                        "databaseUpdateRecyclerViewWithCoroutines: La base de dades està buida"
+                    )
+                }
+                else{
+                    Toast.makeText(context, "The number of scooters is: %s".format(scooters.size), Toast.LENGTH_LONG).show()
+                    adapter.scooterUpdate(scooters)
+                }
             }
+        }*/
 
-            return scooters
-        }
+
+
+
     }
 }

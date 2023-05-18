@@ -1,0 +1,82 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "472cc892daa9df05912065b14faa3c24",
+    "entities": [
+      {
+        "tableName": "scooter",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uuid` TEXT NOT NULL, `nom` TEXT NOT NULL, `longitud` TEXT, `latitud` TEXT, `bateria` TEXT, `distancia` TEXT, `dataManteniment` TEXT, `estat` TEXT, `lliure` TEXT, PRIMARY KEY(`uuid`))",
+        "fields": [
+          {
+            "fieldPath": "uuid",
+            "columnName": "uuid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "nom",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitud",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitud",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "battery_level",
+            "columnName": "bateria",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "km_use",
+            "columnName": "distancia",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date_last_maintenance",
+            "columnName": "dataManteniment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "state",
+            "columnName": "estat",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "on_rent",
+            "columnName": "lliure",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "uuid"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '472cc892daa9df05912065b14faa3c24')"
+    ]
+  }
+}
