@@ -2,15 +2,22 @@ package cat.urv.deim.asm.patinfly.views.scooter
 
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.adapters.ScooterRecyclerViewAdapter
 import cat.urv.deim.asm.patinfly.databinding.ActivityScooterListBinding
 import cat.urv.deim.asm.patinfly.models.ScooterRepository.Companion.databaseUpdateRecyclerViewWithCoroutines
 import cat.urv.deim.asm.patinfly.persistence.AppDatabase
 import cat.urv.deim.asm.patinfly.persistence.Scooter
 import cat.urv.deim.asm.patinfly.persistence.ScooterDao
+import cat.urv.deim.asm.patinfly.views.login.LoginActivity
+import cat.urv.deim.asm.patinfly.views.profile.ProfileInfoActivity
 
 import java.util.*
 
@@ -30,6 +37,28 @@ class ScootersListActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_layout, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        when (item.itemId) {
+            R.id.profile -> {
+                navigateToProfile()
+                true
+            }
+            R.id.logout -> {
+                navigateToMain()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+        return true
     }
 
     override fun onResume() {
@@ -58,7 +87,22 @@ class ScootersListActivity : AppCompatActivity() {
 
 
     }
+
+
+
+    fun navigateToProfile() {
+        val intent = Intent()
+        intent.setClass(this, ProfileInfoActivity::class.java)
+        this.startActivity(intent)
+    }
+
+    fun navigateToMain() {
+        val intent = Intent()
+        intent.setClass(this, LoginActivity::class.java)
+        this.startActivity(intent)
+    }
 }
+
 
 
 

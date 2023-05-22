@@ -82,7 +82,6 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
     //Aquesta funció la farem servir per fer un GET dels patinets en la corutina i poder-ho actualitzar.
     fun updateScooters(scooters: List<Scooter>) {
         this.scooters = scooters
-        Log.d("UserRecyclerViewAdapter", "number of users %s".format(this.scooters.size))
         this.notifyDataSetChanged()
     }
 

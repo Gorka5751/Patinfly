@@ -71,7 +71,6 @@ class ScooterRepository {
                     )
                 }
                 else{
-                    Toast.makeText(context, "The number of scooters is: %s".format(scooters.size), Toast.LENGTH_LONG).show()
                     adapter.updateScooters(scooters)
                 }
             }
