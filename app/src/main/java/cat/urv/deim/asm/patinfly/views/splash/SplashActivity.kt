@@ -27,10 +27,9 @@ class SplashActivity : AppCompatActivity() {
         val scooters : List<Scooter> = ScooterRepository.activeScooterList(this,DEFAULT_SCOOTER_RAW_JSON_FILE)
         val db = AppDatabase.getInstance(this)
         val scooterDao: ScooterDao = db.ScooterDao()
-
+        //Insertem els scooters del JSON a la base de dades just al obrir la app.
         for (scooter in scooters){
             ScooterRepository.insertArrayScooters(scooterDao,scooter)
-            println(scooter.name)
         }
 
 

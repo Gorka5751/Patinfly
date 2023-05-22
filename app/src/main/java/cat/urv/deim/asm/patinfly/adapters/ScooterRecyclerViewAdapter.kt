@@ -6,24 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
 import androidx.recyclerview.widget.RecyclerView
 import cat.urv.deim.asm.patinfly.R
-import cat.urv.deim.asm.patinfly.models.Scooters
 import cat.urv.deim.asm.patinfly.persistence.Scooter
-
 import cat.urv.deim.asm.patinfly.views.scooter.ScooterDetailActivity
-import java.util.*
+
 
 
 class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
     RecyclerView.Adapter<ScooterRecyclerViewAdapter.ViewHolder>() {
 
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val textView: TextView  //nom del patinet
@@ -55,10 +49,11 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
+
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
 
-
+        //Nomes voldrem mostrar la informació dels patinets amb estat ACTIU
         if(scooters.get(position).state == "ACTIVE"){
             viewHolder.textView.text = scooters.get(position).name
             viewHolder.BatteryView.text = "Battery: " + scooters.get(position).battery_level.toString() + "%"
@@ -68,8 +63,14 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
         }
 
         viewHolder.root.setOnClickListener {
+
+            //Passarem per paràmetre intent el valor de la posició per a que després
+            //puguem saber en quina fila fa click el usuari i poder mostrar la informació
+            //corresponent. En el ScooterDetailActivity es mostra la implementació per l'altra banda.
             val intent = Intent(viewHolder.root.context, ScooterDetailActivity::class.java)
+            intent.putExtra("position",position)
             viewHolder.root.context.startActivity(intent)
+
         }
 
     }
@@ -78,6 +79,7 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = scooters.size
 
+    //Aquesta funció la farem servir per fer un GET dels patinets en la corutina i poder-ho actualitzar.
     fun updateScooters(scooters: List<Scooter>) {
         this.scooters = scooters
         Log.d("UserRecyclerViewAdapter", "number of users %s".format(this.scooters.size))
@@ -88,3 +90,5 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
 
 
 }
+
+

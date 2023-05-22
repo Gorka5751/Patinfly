@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
+//Aqui definim la entitat Scooter.
 @Entity(tableName = "scooter")
 data class Scooter(
     @PrimaryKey val uuid: String,

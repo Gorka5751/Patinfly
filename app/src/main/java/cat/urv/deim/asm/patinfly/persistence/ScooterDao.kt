@@ -11,6 +11,8 @@ import java.util.*
 @Dao
 interface ScooterDao {
 
+    //En aquesta interfície definim les funcions necessaries per interactuar amb la base de dades.
+
     @Query("SELECT * FROM scooter")
     fun getAll(): List<Scooter>
 
