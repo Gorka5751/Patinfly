@@ -12,7 +12,8 @@ import cat.urv.deim.asm.patinfly.models.UserRepository
 import cat.urv.deim.asm.patinfly.views.login.LoginInteractor
 import cat.urv.deim.asm.patinfly.views.login.LoginPresenter
 import cat.urv.deim.asm.patinfly.views.login.LoginView
-import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
+
+import cat.urv.deim.asm.patinfly.views.scooter.ScootersListActivity
 
 
 class SignupActivity: AppCompatActivity(), LoginView {
@@ -116,7 +117,7 @@ class SignupActivity: AppCompatActivity(), LoginView {
 
     override fun navigateToProfile() {
         val intent = Intent()
-        intent.setClass(this, PrincipalActivity::class.java)
+        intent.setClass(this, ScootersListActivity::class.java)
         this.startActivity(intent)
     }
     private fun showToast(context: Context = applicationContext, message: String, duration: Int){

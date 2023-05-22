@@ -30,10 +30,11 @@ class SplashActivity : AppCompatActivity() {
 
         for (scooter in scooters){
             ScooterRepository.insertArrayScooters(scooterDao,scooter)
+            println(scooter.name)
         }
 
 
-        postDelayed(4000){
+        postDelayed(5000){
             val intento1 = Intent(this, LoginActivity::class.java)
             startActivity(intento1)
         }

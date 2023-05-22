@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.models.UserRepository
-import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
+
 import cat.urv.deim.asm.patinfly.views.signup.SignupActivity
 
 class ProfileInfoActivity: AppCompatActivity() {
@@ -17,7 +17,6 @@ class ProfileInfoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_info);
-
 
 
 
@@ -35,11 +34,7 @@ class ProfileInfoActivity: AppCompatActivity() {
 
         //Si el usuario se registra correctamente, se le llevara a la actividad principal, que es la
         //misma activity que entraria desde el login.
-        botoCerrarSesion.setOnClickListener{
-            val intento = Intent(this, PrincipalActivity::class.java)
-            startActivity(intento)
-            showToast(applicationContext,"Has creado una cuenta correctamente",10)
-        }
+
         botoCanviarDatos.setOnClickListener {
             val intento = Intent(this, SignupActivity::class.java)
             startActivity(intento)

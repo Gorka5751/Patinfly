@@ -26,6 +26,12 @@ class ScooterRepository {
             val scooters: Scooters = ScooterRepository.activeScooters(context, resource)
             return scooters.scooters
         }
+        fun getAllScooters(context: Context, scooterDao: ScooterDao) = CoroutineScope(Dispatchers.Default).async {
+            return@async scooterDao.getAll()
+        }
+        fun deleteAllScooters(context: Context, scooterDao: ScooterDao) = CoroutineScope(Dispatchers.Default).async {
+            return@async scooterDao.deleteAll()
+        }
 
 
 
@@ -35,6 +41,7 @@ class ScooterRepository {
                 try{
                     scooterDao.insertScooters(scooter)
                 } catch (e: SQLiteConstraintException){
+                    e.printStackTrace()
                     Log.d(ScooterRepository::class.simpleName,"Unique Valor Error")
                 }
 
@@ -51,22 +58,7 @@ class ScooterRepository {
         }
 
 
-       /* fun CorutineUpdateScooters(context: Context, scooterDao: ScooterDao, adapter: ScooterRecyclerViewAdapter){
-            CoroutineScope(Dispatchers.Main).launch {
-                val scootersDeferred: Deferred<List<Scooter>> = getAllScooters(context, scooterDao)
-                val scooters: List<Scooter> = scootersDeferred.await()
-                if (scooters.isEmpty()){
-                    Log.d(
-                        "CoroutineScope",
-                        "databaseUpdateRecyclerViewWithCoroutines: La base de dades està buida"
-                    )
-                }
-                else{
-                    Toast.makeText(context, "The number of scooters is: %s".format(scooters.size), Toast.LENGTH_LONG).show()
-                    adapter.scooterUpdate(scooters)
-                }
-            }
-        }*/
+
 
 
 

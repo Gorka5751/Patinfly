@@ -1,23 +1,22 @@
 package cat.urv.deim.asm.patinfly.adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
+
 import androidx.recyclerview.widget.RecyclerView
 import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.models.Scooters
 import cat.urv.deim.asm.patinfly.persistence.Scooter
-import cat.urv.deim.asm.patinfly.views.principal.PrincipalActivity
+
 import cat.urv.deim.asm.patinfly.views.scooter.ScooterDetailActivity
-import cat.urv.deim.asm.patinfly.views.signup.SignupActivity
+import java.util.*
 
 
-class ScooterRecyclerViewAdapter(private var scooters: Scooters) :
+class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
     RecyclerView.Adapter<ScooterRecyclerViewAdapter.ViewHolder>() {
 
 
@@ -27,7 +26,7 @@ class ScooterRecyclerViewAdapter(private var scooters: Scooters) :
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val textView: TextView
+        val textView: TextView  //nom del patinet
         val BatteryView: TextView
 
 
@@ -60,9 +59,9 @@ class ScooterRecyclerViewAdapter(private var scooters: Scooters) :
         // contents of the view with that element
 
 
-        if(scooters.scooters.get(position).state == "ACTIVE"){
-            viewHolder.textView.text = scooters.scooters.get(position).name
-            viewHolder.BatteryView.text = "Battery: " + scooters.scooters.get(position).battery_level.toString() + "%"
+        if(scooters.get(position).state == "ACTIVE"){
+            viewHolder.textView.text = scooters.get(position).name
+            viewHolder.BatteryView.text = "Battery: " + scooters.get(position).battery_level.toString() + "%"
         }else{
             viewHolder.textView.text = "NO DISPONIBLE"
             viewHolder.BatteryView.text=""
@@ -74,13 +73,16 @@ class ScooterRecyclerViewAdapter(private var scooters: Scooters) :
         }
 
     }
-  //  fun scooterUpdate(scooters: List<Scooter>){
-   //     this.scooters=scooters
-   //     this.notifyDataSetChanged()
-    //}
+
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = scooters.scooters.size
+    override fun getItemCount() = scooters.size
+
+    fun updateScooters(scooters: List<Scooter>) {
+        this.scooters = scooters
+        Log.d("UserRecyclerViewAdapter", "number of users %s".format(this.scooters.size))
+        this.notifyDataSetChanged()
+    }
 
 
 
