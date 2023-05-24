@@ -12,9 +12,10 @@ data class Scooter(
     @ColumnInfo(name = "longitud") val longitude:String?,
     @ColumnInfo(name = "latitud") val latitude:String?,
     @ColumnInfo(name = "bateria") val battery_level: String?,
-    @ColumnInfo(name = "distancia") val km_use:String?,
+    @ColumnInfo(name = "distancia") val meters_use:String?,
+    @ColumnInfo(name = "dataCreacio") val date_create:String?,
     @ColumnInfo(name = "dataManteniment") val date_last_maintenance:String?,
     @ColumnInfo(name = "estat") val state: String?,
-    @ColumnInfo(name = "lliure") val on_rent: String?) {
+    @ColumnInfo(name = "lliure") val vacant: Boolean) {
 
 }

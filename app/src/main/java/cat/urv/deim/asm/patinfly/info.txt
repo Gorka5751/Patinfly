@@ -1,0 +1,9 @@
+curl --location --request GET 'https://patinfly.com/endpoints/rent/start/ea227a94-d480-11ec-91c7-ecf4bbcc40f8' \
+--header 'api-key: ACFT8n5PHSqNs1M6divXafzhZbcRO3prKjGUy925'
+{"code": 200, "msg": "OK", "rent": {"uuid": "1215656a-f6ff-11ed-ab5b-ecf4bbcc40f8", "date_start": "2023-05-20T11:11:29.884Z"}, "timestamp": "2023-05-20T11:11:29.907", "vesion": 1.0}
+
+
+
+curl --location --request GET 'https://patinfly.com/endpoints/rent/stop/ea227a94-d480-11ec-91c7-ecf4bbcc40f8' \
+--header 'api-key: ACFT8n5PHSqNs1M6divXafzhZbcRO3prKjGUy925'
+{"code": 200, "msg": "OK", "rent": {"uuid": "1215656a-f6ff-11ed-ab5b-ecf4bbcc40f8", "date_start": "2023-05-20T11:11:29.884Z", "date_stop": "2023-05-20T11:11:42.913"}, "timestamp": "2023-05-20T11:11:42.926", "vesion": 1.0}

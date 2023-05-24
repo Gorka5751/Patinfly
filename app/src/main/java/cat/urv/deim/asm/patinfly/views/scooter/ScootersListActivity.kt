@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.urv.deim.asm.patinfly.R
 import cat.urv.deim.asm.patinfly.adapters.ScooterRecyclerViewAdapter
+import cat.urv.deim.asm.patinfly.apiREST.OKListener
 import cat.urv.deim.asm.patinfly.databinding.ActivityScooterListBinding
+import cat.urv.deim.asm.patinfly.models.ScooterRepository
 import cat.urv.deim.asm.patinfly.models.ScooterRepository.Companion.databaseUpdateRecyclerViewWithCoroutines
 import cat.urv.deim.asm.patinfly.persistence.AppDatabase
 import cat.urv.deim.asm.patinfly.persistence.Scooter
@@ -37,6 +39,8 @@ class ScootersListActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,11 +54,11 @@ class ScootersListActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.profile -> {
                 navigateToProfile()
-                true
+
             }
             R.id.logout -> {
                 navigateToMain()
-                true
+
             }
             else -> super.onOptionsItemSelected(item)
         }

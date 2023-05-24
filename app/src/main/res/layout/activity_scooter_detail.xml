@@ -18,28 +18,26 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="342dp"
-            android:layout_height="33dp"
+            android:layout_width="169dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
             android:text="Name:"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.106"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/BatteryView"
             android:layout_width="159dp"
             android:layout_height="29dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
             android:text="Battery:"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.337"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

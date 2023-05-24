@@ -18,9 +18,18 @@ companion object{
         createUser(User(nom,cognom,correu,telefon,dni,nacionalitat,km,contrasenya))
     }
 
+    fun modifyUser( nom: String = "",  cognom: String = "",  correu: String = "",  telefon: String="",  dni: String = "",
+                    nacionalitat: String ="",  km: String="", contrasenya: String=""){
+        modifyUser(User(nom,cognom,correu,telefon,dni,nacionalitat,km,contrasenya))
+    }
+
+
+
     fun createUser(user: User){
         userGlobal = user
-
+    }
+    fun modifyUser(user:User){
+        userGlobal=user
     }
 }
 

@@ -38,6 +38,8 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+
+
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.activity_scooter_detail, viewGroup, false)
@@ -68,7 +70,8 @@ class ScooterRecyclerViewAdapter(private var scooters: List<Scooter>) :
             //puguem saber en quina fila fa click el usuari i poder mostrar la informació
             //corresponent. En el ScooterDetailActivity es mostra la implementació per l'altra banda.
             val intent = Intent(viewHolder.root.context, ScooterDetailActivity::class.java)
-            intent.putExtra("position",position)
+            val param: String = scooters.get(position).uuid
+            intent.putExtra("id",param)
             viewHolder.root.context.startActivity(intent)
 
         }

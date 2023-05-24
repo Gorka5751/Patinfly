@@ -72,8 +72,8 @@
 
     <TextView
         android:id="@+id/DataIncorporacio"
-        android:layout_width="131dp"
-        android:layout_height="16dp"
+        android:layout_width="279dp"
+        android:layout_height="17dp"
         android:layout_marginTop="20dp"
         android:text="Data de incorporació"
         android:textAlignment="center"
@@ -94,8 +94,8 @@
 
     <TextView
         android:id="@+id/Estat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="136dp"
+        android:layout_height="19dp"
         android:layout_marginTop="20dp"
         android:text="Estat"
         android:textAlignment="center"
@@ -105,8 +105,8 @@
 
     <TextView
         android:id="@+id/Lliure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="133dp"
+        android:layout_height="25dp"
         android:layout_marginTop="20dp"
         android:text="Lliure"
         android:textAlignment="center"
@@ -118,9 +118,19 @@
         android:id="@+id/BotoLlogar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Llogar"
+        android:text="Rent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BotoDesllogar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Unrent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

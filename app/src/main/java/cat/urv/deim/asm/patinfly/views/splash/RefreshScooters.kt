@@ -1,8 +1,10 @@
 package cat.urv.deim.asm.patinfly.views.splash
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cat.urv.deim.asm.patinfly.R
 
@@ -18,27 +20,11 @@ import cat.urv.deim.asm.patinfly.apiREST.OKListener
 import cat.urv.deim.asm.patinfly.views.scooter.ScootersListActivity
 
 
-//NOM DELS INTEGRANTS DEL GRUP: GORKA ZAMORANO ORÓ I POL CULLERÉ FARRÉ
-// GRUP DE ASM --> ASM25
-
-class SplashActivity : AppCompatActivity() {
+class RefreshScooters : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splashscreen)
 
-        //ESTE TROZO COMENTADO ES PARA INTRODUCIR LOS DATOS DEL JSON LOCAL EN LA BASE DE DATOS
-        //EN LA PRACTICA 3 YA IMPLEMENTAMOS LOS GET A TRAVES DE UNA URL PARA ACCEDER AL JSON.
-
-        /*val scooters : List<Scooter> = ScooterRepository.activeScooterList(this,DEFAULT_SCOOTER_RAW_JSON_FILE)
-
-
-        //Insertem els scooters del JSON a la base de dades just al obrir la app.
-        for (scooter in scooters){
-           ScooterRepository.insertArrayScooters(scooterDao,scooter)
-        }*/
-
-        //Hace una peticion http al servidor y devuelve un fichero JSON que lo
-        // añade a la base de datos local ROOM.
         val db = AppDatabase.getInstance(this)
         val scooterDao: ScooterDao = db.ScooterDao()
         ScooterRepository.deleteAllScooters(this,scooterDao)
@@ -46,11 +32,13 @@ class SplashActivity : AppCompatActivity() {
 
 
 
-        postDelayed(3000){
-            val intento1 = Intent(this, LoginActivity::class.java)
-            startActivity(intento1)
+        postDelayed(2000){
+            val intent = Intent(this, ScootersListActivity::class.java)
+            startActivity(intent)
         }
     }
 
 
 }
+
+

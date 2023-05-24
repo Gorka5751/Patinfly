@@ -15,15 +15,11 @@ import cat.urv.deim.asm.patinfly.models.UserRepository
 import cat.urv.deim.asm.patinfly.views.login.LoginActivity
 import cat.urv.deim.asm.patinfly.views.scooter.ScootersListActivity
 
-import cat.urv.deim.asm.patinfly.views.signup.SignupActivity
-
 class ProfileInfoActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_info);
-
-
 
 
         findViewById<TextView>(R.id.nomProfile).text = UserRepository.userGlobal.nom;
@@ -33,9 +29,13 @@ class ProfileInfoActivity: AppCompatActivity() {
         findViewById<TextView>(R.id.telefon).text = UserRepository.userGlobal.telefon;
         findViewById<TextView>(R.id.nacio).text = UserRepository.userGlobal.nacionalitat;
         findViewById<TextView>(R.id.kilometres).text = UserRepository.userGlobal.Km;
+        val botoEditar=findViewById<Button>(R.id.done)
 
-
-
+        botoEditar.setOnClickListener(){
+            val intent = Intent()
+            intent.setClass(this, ChangeProfile::class.java)
+            this.startActivity(intent)
+        }
 
     }
 

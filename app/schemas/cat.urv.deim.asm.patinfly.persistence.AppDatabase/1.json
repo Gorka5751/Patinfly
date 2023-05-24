@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "472cc892daa9df05912065b14faa3c24",
+    "identityHash": "06f94e932ca6e2bf3eb426491ca5c6d4",
     "entities": [
       {
         "tableName": "scooter",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uuid` TEXT NOT NULL, `nom` TEXT NOT NULL, `longitud` TEXT, `latitud` TEXT, `bateria` TEXT, `distancia` TEXT, `dataManteniment` TEXT, `estat` TEXT, `lliure` TEXT, PRIMARY KEY(`uuid`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uuid` TEXT NOT NULL, `nom` TEXT NOT NULL, `longitud` TEXT, `latitud` TEXT, `bateria` TEXT, `distancia` TEXT, `dataCreacio` TEXT, `dataManteniment` TEXT, `estat` TEXT, `lliure` INTEGER NOT NULL, PRIMARY KEY(`uuid`))",
         "fields": [
           {
             "fieldPath": "uuid",
@@ -39,8 +39,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "km_use",
+            "fieldPath": "meters_use",
             "columnName": "distancia",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date_create",
+            "columnName": "dataCreacio",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -57,10 +63,10 @@
             "notNull": false
           },
           {
-            "fieldPath": "on_rent",
+            "fieldPath": "vacant",
             "columnName": "lliure",
-            "affinity": "TEXT",
-            "notNull": false
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -76,7 +82,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '472cc892daa9df05912065b14faa3c24')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '06f94e932ca6e2bf3eb426491ca5c6d4')"
     ]
   }
 }
